@@ -1,5 +1,7 @@
 package in.nit.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +20,14 @@ public class DocumentController {
 	private IDocumentService service;
 
 	// 1. show Documents upload page
+	/*
+	 * @RequestMapping("/show") public String showUploadPage() { return "Documents";
+	 * }
+	 */
 	@RequestMapping("/show")
-	public String showUploadPage() {
+	public String showUploadPage(Model model) {
+		List<Object[]> list = service.getFileIdAndNames();
+		model.addAttribute("list", list);
 		return "Documents";
 	}
 
@@ -34,6 +42,6 @@ public class DocumentController {
 			String msg = fileId + "is uploaded";
 			model.addAttribute("message", msg);
 		}
-		return "Documents";
+		return "redirect:show";
 	}
 }

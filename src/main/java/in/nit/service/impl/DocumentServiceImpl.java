@@ -1,9 +1,10 @@
 package in.nit.service.impl;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import in.nit.dao.IDocumentDao;
 import in.nit.model.Document;
@@ -19,4 +20,8 @@ public class DocumentServiceImpl implements IDocumentService {
 		return dao.saveDocument(doc);
 	}
 
+	@Transactional(readOnly = true)
+	public List<Object[]> getFileIdAndNames() {
+		return dao.getFileIdAndNames();
+	}
 }

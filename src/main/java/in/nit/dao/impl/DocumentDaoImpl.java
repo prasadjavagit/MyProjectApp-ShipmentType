@@ -1,5 +1,7 @@
 package in.nit.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,4 +19,11 @@ public class DocumentDaoImpl implements IDocumentDao {
 		return (Integer) ht.save(doc);
 	}
 
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	@Override
+	public List<Object[]> getFileIdAndNames() {
+		String hql="select fileId, fileName from in.nit.model.Document";
+		return (List<Object[]>) ht.find(hql);
+	}
+	
 }
