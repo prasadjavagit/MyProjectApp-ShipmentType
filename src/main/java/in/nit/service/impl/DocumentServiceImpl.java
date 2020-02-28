@@ -24,4 +24,9 @@ public class DocumentServiceImpl implements IDocumentService {
 	public List<Object[]> getFileIdAndNames() {
 		return dao.getFileIdAndNames();
 	}
+
+	@Transactional(readOnly = true)
+	public Document getOneDocument(Integer id) {
+		return dao.getOneDocument(id);
+	}
 }

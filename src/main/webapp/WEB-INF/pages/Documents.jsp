@@ -22,13 +22,11 @@
 			<th>NAME</th>
 			<th>LINK</th>
 		</tr>
-		<c:forEach items="${list }"  var="ob">
+		<c:forEach items="${list }" var="ob">
 			<tr>
 				<td>${ob[0] }</td>
 				<td>${ob[1] }</td>
-				<td>
-					<a href="#">Download</a>
-				</td>
+				<td><a href="download?fid=${ob[0] }">Download</a></td>
 			</tr>
 		</c:forEach>
 	</table>

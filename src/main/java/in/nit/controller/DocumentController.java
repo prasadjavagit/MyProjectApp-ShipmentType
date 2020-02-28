@@ -1,10 +1,14 @@
 package in.nit.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,5 +47,17 @@ public class DocumentController {
 			model.addAttribute("message", msg);
 		}
 		return "redirect:show";
+	}
+
+	@RequestMapping("/download")
+	public void doDownload(@RequestParam Integer fid, HttpServletResponse resp) {
+		// read one object based on id
+		Document doc = service.getOneDocument(fid);
+		resp.addHeader("Content-Disposition", "attachment;filename=" + doc.getFileName());
+		try {
+			FileCopyUtils.copy(doc.getFileData(), resp.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

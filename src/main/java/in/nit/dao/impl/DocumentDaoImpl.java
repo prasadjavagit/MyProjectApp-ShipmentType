@@ -25,5 +25,8 @@ public class DocumentDaoImpl implements IDocumentDao {
 		String hql="select fileId, fileName from in.nit.model.Document";
 		return (List<Object[]>) ht.find(hql);
 	}
-	
+	 @Override
+	public Document getOneDocument(Integer id) {
+		return ht.get(Document.class, id);
+	}
 }
