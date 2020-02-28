@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -13,7 +12,6 @@ import javax.persistence.Table;
 @Table(name = "docstab")
 public class Document {
 	@Id
-	@GeneratedValue
 	@Column(name = "fid")
 	private Integer fileId;
 	@Column(name = "fname")

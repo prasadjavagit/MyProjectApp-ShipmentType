@@ -88,6 +88,7 @@ public class AppConfig {
 	}
 
 	// 6. Activate CommonsMultiPartfile
+	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		return new CommonsMultipartResolver();
 	}
