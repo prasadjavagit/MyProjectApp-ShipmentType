@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import in.nit.model.ShipmentType;
 import in.nit.service.IShipmentTypeService;
+import in.nit.view.ShipmentTypePdfView;
 
 @Controller
 @RequestMapping("/shipment")
@@ -80,5 +82,15 @@ public class ShipmentTypeController {
 		ShipmentType st = service.getOneShipmentType(id);
 		model.addAttribute("ob", st);
 		return "ShipmentTypeView";
+	}
+
+	@RequestMapping("/pdf")
+	public ModelAndView showPdf() {
+		ModelAndView m = new ModelAndView();
+		m.setView(new ShipmentTypePdfView());
+		List<ShipmentType> list = service.getAllShipmentTypes();
+		// send data to pdf file
+		m.addObject("list", list);
+		return m;
 	}
 }

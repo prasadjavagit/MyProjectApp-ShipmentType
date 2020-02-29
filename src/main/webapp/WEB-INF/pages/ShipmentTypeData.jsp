@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h3>Welcome to Shipment Type Data Page</h3>
+	<a href="pdf">PDF Export</a>
 	<c:choose>
 		<c:when test="${!empty list }">
 			<table border="1">
