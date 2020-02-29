@@ -1,5 +1,6 @@
 package in.nit.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,13 +85,23 @@ public class ShipmentTypeController {
 		return "ShipmentTypeView";
 	}
 
+	/*
+	 * @RequestMapping("/pdf") public ModelAndView showPdf() { ModelAndView m = new
+	 * ModelAndView(); m.setView(new ShipmentTypePdfView()); List<ShipmentType> list
+	 * = service.getAllShipmentTypes(); // send data to pdf file m.addObject("list",
+	 * list); return m; }
+	 */
 	@RequestMapping("/pdf")
-	public ModelAndView showPdf() {
+	public ModelAndView showPdf(@RequestParam(value = "id", required = false) Integer id) {
 		ModelAndView m = new ModelAndView();
 		m.setView(new ShipmentTypePdfView());
-		List<ShipmentType> list = service.getAllShipmentTypes();
-		// send data to pdf file
-		m.addObject("list", list);
+		if (id == null) {
+			List<ShipmentType> list = service.getAllShipmentTypes();
+			m.addObject("list", list);
+		} else {
+			ShipmentType st = service.getOneShipmentType(id);
+			m.addObject("list", Arrays.asList(st));
+		}
 		return m;
 	}
 }

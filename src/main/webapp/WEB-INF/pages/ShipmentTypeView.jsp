@@ -34,5 +34,6 @@
 			<td>${ob.shipDesc }</td>
 		</tr>
 	</table>
+	<a href="pdf?id=${ob.shipId }">PDF Export</a>
 </body>
 </html>
