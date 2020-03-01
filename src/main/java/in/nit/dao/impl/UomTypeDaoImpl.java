@@ -30,4 +30,8 @@ public class UomTypeDaoImpl implements IUomTypeDao {
 		ut.setUomId(id);
 		ht.delete(ut);
 	}
+	@Override
+	public UomType getOneUomType(Integer id) {
+		return ht.get(UomType.class, id);
+	}
 }

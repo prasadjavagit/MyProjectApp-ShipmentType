@@ -49,4 +49,10 @@ public class UomTypeController {
 		model.addAttribute("li", list);
 		return "UomTypeData";
 	}
+	@RequestMapping("/edit")
+	public String getOneUomType(@RequestParam("umid")Integer id,Model model) {
+		UomType ut = service.getOneUomType(id);
+		model.addAttribute("uomType", ut);
+		return "UomTypeEdit";
+	}
 }

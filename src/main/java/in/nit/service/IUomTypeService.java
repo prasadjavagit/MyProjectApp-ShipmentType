@@ -8,4 +8,5 @@ public interface IUomTypeService {
 	public Integer saveUomType(UomType ob);
 	public List<UomType> getAllUomTypes();
 	public void deletUomType(Integer id);
+	public UomType getOneUomType(Integer id);
 }
