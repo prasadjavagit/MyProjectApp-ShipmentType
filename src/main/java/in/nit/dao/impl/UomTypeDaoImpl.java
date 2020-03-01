@@ -1,5 +1,7 @@
 package in.nit.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,4 +20,8 @@ public class UomTypeDaoImpl implements IUomTypeDao {
 		return id;
 	}
 
+	@Override
+	public List<UomType> getAllUomTypes() {
+		return ht.loadAll(UomType.class);
+	}
 }

@@ -1,5 +1,7 @@
 package in.nit.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +16,25 @@ import in.nit.service.IUomTypeService;
 public class UomTypeController {
 	@Autowired
 	private IUomTypeService service;
+
 	@RequestMapping("/register")
 	public String showRegPage(Model model) {
-		model.addAttribute("uomType",new UomType());
+		model.addAttribute("uomType", new UomType());
 		return "UomTypeRegister";
 	}
+
 	@RequestMapping("/save")
 	public String saveUom(@ModelAttribute UomType uomType, Model model) {
 		Integer id = service.saveUomType(uomType);
-		String message="Uom Type '"+id+"' saved";
-		model.addAttribute("msg",message);
+		String message = "Uom Type '" + id + "' saved";
+		model.addAttribute("msg", message);
 		return "UomTypeRegister";
+	}
+
+	@RequestMapping("/all")
+	public String getAllUomTypes(Model model) {
+		List<UomType> list = service.getAllUomTypes();
+		model.addAttribute("li", list);
+		return "UomTypeData";
 	}
 }
