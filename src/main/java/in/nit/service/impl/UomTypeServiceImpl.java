@@ -24,4 +24,9 @@ public class UomTypeServiceImpl implements IUomTypeService, IUomTypeDao {
 	public List<UomType> getAllUomTypes() {
 		return dao.getAllUomTypes();
 	}
+
+	@Transactional
+	public void deletUomType(Integer id) {
+		dao.deletUomType(id);
+	}
 }

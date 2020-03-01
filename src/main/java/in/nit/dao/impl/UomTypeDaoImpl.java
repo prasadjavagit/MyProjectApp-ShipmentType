@@ -24,4 +24,10 @@ public class UomTypeDaoImpl implements IUomTypeDao {
 	public List<UomType> getAllUomTypes() {
 		return ht.loadAll(UomType.class);
 	}
+	@Override
+	public void deletUomType(Integer id) {
+		UomType ut=new UomType();
+		ut.setUomId(id);
+		ht.delete(ut);
+	}
 }

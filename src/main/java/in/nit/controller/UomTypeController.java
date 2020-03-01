@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import in.nit.model.UomType;
 import in.nit.service.IUomTypeService;
@@ -28,11 +29,22 @@ public class UomTypeController {
 		Integer id = service.saveUomType(uomType);
 		String message = "Uom Type '" + id + "' saved";
 		model.addAttribute("msg", message);
+		model.addAttribute("uomType", new UomType());
 		return "UomTypeRegister";
 	}
 
 	@RequestMapping("/all")
 	public String getAllUomTypes(Model model) {
+		List<UomType> list = service.getAllUomTypes();
+		model.addAttribute("li", list);
+		return "UomTypeData";
+	}
+
+	@RequestMapping("/delete")
+	public String deleteUom(@RequestParam("umid") Integer id, Model model) {
+		service.deletUomType(id);
+		String message = "Uom '" + id + "'Deleted";
+		model.addAttribute("message", message);
 		List<UomType> list = service.getAllUomTypes();
 		model.addAttribute("li", list);
 		return "UomTypeData";

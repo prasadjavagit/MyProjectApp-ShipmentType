@@ -17,6 +17,7 @@
 					<th>TYPE</th>
 					<th>MODEL</th>
 					<th>NOTE</th>
+					<th>OPERATION</th>
 				</tr>
 				<c:forEach items="${li }" var="ob">
 					<tr>
@@ -24,6 +25,7 @@
 						<td>${ob. uomType}</td>
 						<td>${ob. uomModel}</td>
 						<td>${ob. uomDesc}</td>
+						<td><a href="delete?umid=${ob.uomId }">DELETE</a></td>
 					</tr>
 				</c:forEach>
 			</table>
