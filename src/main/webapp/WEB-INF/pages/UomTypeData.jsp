@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h3>Welcome to Uom Type Data</h3>
+	<a href="pdf">PDF Export</a>
 	<c:choose>
 		<c:when test="${!empty li }">
 			<table border=1>

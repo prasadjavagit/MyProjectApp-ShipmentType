@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import in.nit.model.UomType;
 import in.nit.service.IUomTypeService;
+import in.nit.view.UomTypePdfView;
 
 @Controller
 @RequestMapping("/uom")
@@ -73,5 +75,14 @@ public class UomTypeController {
 		UomType ut = service.getOneUomType(id);
 		model.addAttribute("ob", ut);
 		return "UomTypeView";
+	}
+
+	@RequestMapping("/pdf")
+	public ModelAndView showPdf() {
+		ModelAndView m = new ModelAndView();
+		m.setView(new UomTypePdfView());
+		List<UomType> list = service.getAllUomTypes();
+		m.addObject("li", list);
+		return m;
 	}
 }
