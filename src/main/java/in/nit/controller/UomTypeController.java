@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import in.nit.model.UomType;
@@ -54,5 +55,14 @@ public class UomTypeController {
 		UomType ut = service.getOneUomType(id);
 		model.addAttribute("uomType", ut);
 		return "UomTypeEdit";
+	}
+	@RequestMapping(value="/update", method = RequestMethod.POST)
+	public String updateUomType(@ModelAttribute UomType uomType, Model model) {
+		service.updateUomType(uomType);
+		String message="UomType '"+uomType.getUomId()+"'updated";
+		model.addAttribute("message", message);
+		List<UomType> list = service.getAllUomTypes();
+		model.addAttribute("li", list);
+		return "UomTypeData";
 	}
 }

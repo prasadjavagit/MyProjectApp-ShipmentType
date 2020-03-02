@@ -9,4 +9,5 @@ public interface IUomTypeService {
 	public List<UomType> getAllUomTypes();
 	public void deletUomType(Integer id);
 	public UomType getOneUomType(Integer id);
+	public void updateUomType(UomType ob);
 }

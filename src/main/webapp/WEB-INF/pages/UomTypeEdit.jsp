@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>Welcomt to Uom Type Edit Page</h3>
-	<form:form action="" method="POST" modelAttribute="uomType">
+	<form:form action="update" method="POST" modelAttribute="uomType">
 		<pre>
 		Uom Id:
 			<form:input path="uomId" readonly="true" />

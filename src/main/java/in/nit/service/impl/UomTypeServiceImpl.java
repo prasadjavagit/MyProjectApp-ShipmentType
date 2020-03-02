@@ -34,4 +34,9 @@ public class UomTypeServiceImpl implements IUomTypeService, IUomTypeDao {
 	public UomType getOneUomType(Integer id) {
 		return dao.getOneUomType(id);
 	}
+	
+	@Transactional
+	public void updateUomType(UomType ob) {
+		dao.updateUomType(ob);
+	}
 }

@@ -34,4 +34,8 @@ public class UomTypeDaoImpl implements IUomTypeDao {
 	public UomType getOneUomType(Integer id) {
 		return ht.get(UomType.class, id);
 	}
+	@Override
+	public void updateUomType(UomType ob) {
+		ht.update(ob);
+	}
 }
