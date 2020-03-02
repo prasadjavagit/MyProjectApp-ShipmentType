@@ -50,19 +50,28 @@ public class UomTypeController {
 		model.addAttribute("li", list);
 		return "UomTypeData";
 	}
+
 	@RequestMapping("/edit")
-	public String getOneUomType(@RequestParam("umid")Integer id,Model model) {
+	public String getOneUomType(@RequestParam("umid") Integer id, Model model) {
 		UomType ut = service.getOneUomType(id);
 		model.addAttribute("uomType", ut);
 		return "UomTypeEdit";
 	}
-	@RequestMapping(value="/update", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateUomType(@ModelAttribute UomType uomType, Model model) {
 		service.updateUomType(uomType);
-		String message="UomType '"+uomType.getUomId()+"'updated";
+		String message = "UomType '" + uomType.getUomId() + "'updated";
 		model.addAttribute("message", message);
 		List<UomType> list = service.getAllUomTypes();
 		model.addAttribute("li", list);
 		return "UomTypeData";
+	}
+
+	@RequestMapping("/view")
+	public String showOneUom(@RequestParam("umid") Integer id, Model model) {
+		UomType ut = service.getOneUomType(id);
+		model.addAttribute("ob", ut);
+		return "UomTypeView";
 	}
 }

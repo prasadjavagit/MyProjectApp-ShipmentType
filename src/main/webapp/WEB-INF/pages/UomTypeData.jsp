@@ -17,7 +17,7 @@
 					<th>TYPE</th>
 					<th>MODEL</th>
 					<th>NOTE</th>
-					<th colspan="2">OPERATION</th>
+					<th colspan="3">OPERATION</th>
 				</tr>
 				<c:forEach items="${li }" var="ob">
 					<tr>
@@ -27,6 +27,7 @@
 						<td>${ob. uomDesc}</td>
 						<td><a href="delete?umid=${ob.uomId }">DELETE</a></td>
 						<td><a href="edit?umid=${ob.uomId }">EDIT</a></td>
+						<td><a href="view?umid=${ob.uomId }">VIEW</a></td>
 					</tr>
 				</c:forEach>
 			</table>
