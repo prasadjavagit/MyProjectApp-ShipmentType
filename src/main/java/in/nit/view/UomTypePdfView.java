@@ -20,7 +20,7 @@ public class UomTypePdfView extends AbstractPdfView {
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest requeut, HttpServletResponse response) throws Exception {
-		response.addHeader("Context-Disposition", "attachment;filename=uoms.pdf");
+		response.addHeader("Content-Disposition", "attachment;filename=uoms.pdf");
 		Paragraph p = new Paragraph("Welcome to UomType");
 		document.add(p);
 		@SuppressWarnings("unchecked")
