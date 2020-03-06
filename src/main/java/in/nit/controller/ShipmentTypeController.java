@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import in.nit.model.ShipmentType;
 import in.nit.service.IShipmentTypeService;
+import in.nit.view.ShipmentTypeExcelView;
 import in.nit.view.ShipmentTypePdfView;
 
 @Controller
@@ -102,6 +103,16 @@ public class ShipmentTypeController {
 			ShipmentType st = service.getOneShipmentType(id);
 			m.addObject("list", Arrays.asList(st));
 		}
+		return m;
+	}
+
+	@RequestMapping("/excel")
+	public ModelAndView showExcel() {
+		ModelAndView m = new ModelAndView();
+		m.setView(new ShipmentTypeExcelView());
+		// fetching data from DB
+		List<ShipmentType> list = service.getAllShipmentTypes();
+		m.addObject("list", list);
 		return m;
 	}
 }

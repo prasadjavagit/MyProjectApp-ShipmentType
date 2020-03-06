@@ -9,38 +9,48 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Welcome to Shipment Type Data Page</h3>
-	<a href="pdf">PDF Export</a>
-	<c:choose>
-		<c:when test="${!empty list }">
-			<table border="1">
-				<tr>
-					<th>ID</th>
-					<th>MODE</th>
-					<th>CODE</th>
-					<th>ENABLE</th>
-					<th>GRADE</th>
-					<th>NOTE</th>
-					<th colspan="3">OPERATION</th>
-				</tr>
-				<c:forEach items="${list }" var="ob">
-					<tr>
-						<td>${ob.shipId }</td>
-						<td>${ob.shipMode }</td>
-						<td>${ob.shipCode }</td>
-						<td>${ob.enbShip }</td>
-						<td>${ob.shipGrad }</td>
-						<td>${ob.shipDesc }</td>
-						<td><a href="delete?sid=${ob.shipId }">DELETE</a></td>
-						<td><a href="edit?sid=${ob.shipId }">EDIT</a>
-						<td><a href="view?sid=${ob.shipId }">View</a>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:when>
-		<c:otherwise>
-			<h4>No Data Found!!</h4>
-		</c:otherwise>
-	</c:choose>
+	<%@include file="UserMenu.jsp"%>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-white text-center">
+				<h3>Welcome to Shipment Type Data Page</h3>
+			</div>
+			<div class="card-body">
+			<a href="excel">Excel Export</a>
+			<a href="pdf">PDF Export</a>
+			<c:choose>
+				<c:when test="${!empty list }">
+					<table border="1">
+						<tr>
+							<th>ID</th>
+							<th>MODE</th>
+							<th>CODE</th>
+							<th>ENABLE</th>
+							<th>GRADE</th>
+							<th>NOTE</th>
+							<th colspan="3">OPERATION</th>
+						</tr>
+						<c:forEach items="${list }" var="ob">
+							<tr>
+								<td>${ob.shipId }</td>
+								<td>${ob.shipMode }</td>
+								<td>${ob.shipCode }</td>
+								<td>${ob.enbShip }</td>
+								<td>${ob.shipGrad }</td>
+								<td>${ob.shipDesc }</td>
+								<td><a href="delete?sid=${ob.shipId }">DELETE</a></td>
+								<td><a href="edit?sid=${ob.shipId }">EDIT</a>
+								<td><a href="view?sid=${ob.shipId }">View</a>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:when>
+				<c:otherwise>
+					<h4>No Data Found!!</h4>
+				</c:otherwise>
+			</c:choose>
+			</div>
+		</div><!-- card end -->
+	</div><!-- container end -->
 </body>
 </html>
