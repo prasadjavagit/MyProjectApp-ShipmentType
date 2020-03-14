@@ -16,7 +16,7 @@
 				<h3>Welcome to Purchase Order Register Page</h3>
 			</div>
 			<div class="card-body">
-				<form:form action="#" method="POST" modelAttribute="purchaseOrder">
+				<form:form action="save" method="POST" modelAttribute="purchaseOrder">
 					<div class="row">
 						<div class="col-4">
 							<label for="orderCode">Order Code</label>
@@ -83,7 +83,9 @@
 				</form:form>
 			</div>
 			<c:if test="${!empty msg }">
+			<div class="card-footer bg-info text-white text-center">
 				<b>${msg }</b>
+			</div>
 			</c:if>
 		</div><!-- card end -->
 	</div><!-- container end -->

@@ -6,7 +6,7 @@ import in.nit.model.PurchaseOrder;
 
 public interface IPurchaseOrderService {
 
-	Integer PurchaseOrder(PurchaseOrder ob);
+	Integer savePurchaseOrder(PurchaseOrder ob);
 
 	List<PurchaseOrder> getAllPurchaseOrders();
 

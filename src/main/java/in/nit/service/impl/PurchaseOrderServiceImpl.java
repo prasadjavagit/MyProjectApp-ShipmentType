@@ -19,7 +19,7 @@ public class PurchaseOrderServiceImpl implements IPurchaseOrderService {
 	
 	@Override
 	@Transactional
-	public Integer PurchaseOrder(PurchaseOrder ob) {
+	public Integer savePurchaseOrder(PurchaseOrder ob) {
 		return dao.savePurchaseOrder(ob);
 	}
 
