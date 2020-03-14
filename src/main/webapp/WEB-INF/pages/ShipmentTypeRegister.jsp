@@ -80,13 +80,15 @@
 						<div class="col-4">
 							<form:textarea path="shipDesc" class="form-control" />
 						</div>
-						<div class="col-4"></div>
+						<div class="col-4">
+							<!-- Error message -->
+						</div>
 					</div>
 					<div class="row">
 						<div class="col-4"></div>
 						<div class="col-4">
-							<input type="submit" value="Create" class="btn btn-success" /> <input
-								type="reset" value="Clear" class="btn btn-danger" />
+							<input type="submit" value="Create" class="btn btn-success" /> 
+							<input type="reset" value="Clear" class="btn btn-danger" />
 						</div>
 					</div>
 				</form:form>
