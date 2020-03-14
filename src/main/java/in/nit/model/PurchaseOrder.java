@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,9 @@ public class PurchaseOrder {
 	private String status;
 	@Column(name = "note")
 	private String note;
+	@ManyToOne
+	@JoinColumn(name="shipIdFk")
+	private ShipmentType shipOb;//HAS-A
 
 	public PurchaseOrder() {
 		super();
@@ -31,6 +36,14 @@ public class PurchaseOrder {
 	public PurchaseOrder(Integer pId) {
 		super();
 		this.pId = pId;
+	}
+
+	public ShipmentType getShipOb() {
+		return shipOb;
+	}
+
+	public void setShipOb(ShipmentType shipOb) {
+		this.shipOb = shipOb;
 	}
 
 	public Integer getpId() {
@@ -84,7 +97,7 @@ public class PurchaseOrder {
 	@Override
 	public String toString() {
 		return "PurchaseOrder [pId=" + pId + ", orderCode=" + orderCode + ", refNum=" + refNum + ", qltyChk=" + qltyChk
-				+ ", status=" + status + ", note=" + note + "]";
+				+ ", status=" + status + ", note=" + note + ", shipOb=" + shipOb + "]";
 	}
 
 }

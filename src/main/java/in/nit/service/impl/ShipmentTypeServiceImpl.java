@@ -44,4 +44,9 @@ public class ShipmentTypeServiceImpl implements IShipmentTypeService {
 	public void updateShipmentType(ShipmentType ob) {
 		dao.updateShipmentType(ob);
 	}
+	@Override
+	@Transactional(readOnly = true)
+	public List<Object[]> getShipmentIdAndCode() {
+		return dao.getShipmentIdAndCode();
+	}
 }

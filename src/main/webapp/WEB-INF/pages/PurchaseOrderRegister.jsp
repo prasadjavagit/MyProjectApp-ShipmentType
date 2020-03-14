@@ -30,6 +30,20 @@
 					</div>
 					<div class="row">
 						<div class="col-4">
+							<label for="">Shipment Code</label>
+						</div>
+						<div class="col-4">
+							<form:select path="shipOb.shipId" class="form-control">
+								<form:option value="">-SELECT-</form:option>
+								<form:options items="${shipmentMap }"/>
+							</form:select>
+						</div>
+						<div class="col-4">
+							<!-- Error message -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
 							<label for="refNum">Reference Number</label>
 						</div>
 						<div class="col-4">
