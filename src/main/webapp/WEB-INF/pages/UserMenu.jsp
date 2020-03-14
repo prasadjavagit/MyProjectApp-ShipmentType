@@ -51,6 +51,19 @@
 					<a class="dropdown-item" href="${url}/ordermethod/charts">CHARTS</a>
 				</div>
 			</li><!-- one option end -->
+			<!-- one option start-->
+			<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> PURCHASE ORDER
+			</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="${url}/po/register">REGISTER</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="${url}/po/all">ALL</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="${url}/po/charts">CHARTS</a>
+				</div>
+			</li><!-- one option end -->
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="search"

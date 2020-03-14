@@ -20,31 +20,41 @@ import in.nit.util.CommonUtil;
 public class PurchaseController {
 	@Autowired
 	private IPurchaseOrderService service;
-	
+
 	@Autowired
 	private IShipmentTypeService shipmentService;
-	
+
 	private void commonUi(Model model) {
-		List<Object[]> shipmentList=shipmentService.getShipmentIdAndCode();
-		Map<Integer,String> shipmentMap=CommonUtil.convert(shipmentList);
-		model.addAttribute("shipmentMap",shipmentMap);
+		List<Object[]> shipmentList = shipmentService.getShipmentIdAndCode();
+		Map<Integer, String> shipmentMap = CommonUtil.convert(shipmentList);
+		model.addAttribute("shipmentMap", shipmentMap);
 	}
-	
+
 	@RequestMapping("/register")
 	public String getRegPage(Model model) {
-		PurchaseOrder po=new PurchaseOrder();
-		po.setStatus("OPEN");
 		commonUi(model);
+		PurchaseOrder po = new PurchaseOrder();
+		po.setStatus("OPEN");
 		model.addAttribute("purchaseOrder", po);
 		return "PurchaseOrderRegister";
 	}
-	@RequestMapping(value="/save", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String savePurchaseOrder(@ModelAttribute PurchaseOrder purchaseOrder, Model model) {
-		Integer id=service.savePurchaseOrder(purchaseOrder);
-		String msg="PurchaseOrder "+id+" saved";
-		model.addAttribute("msg",msg);
+		Integer id = service.savePurchaseOrder(purchaseOrder);
+		String msg = "PurchaseOrder " + id + " saved";
+		model.addAttribute("msg", msg);
 		commonUi(model);
-		model.addAttribute("purchaseOrder", new PurchaseOrder());
+		PurchaseOrder po=new PurchaseOrder();
+		po.setStatus("OPEN");
+		model.addAttribute("purchaseOrder", po);
 		return "PurchaseOrderRegister";
+	}
+
+	@RequestMapping("/all")
+	public String getAppPurchaseOrders(Model model) {
+		List<PurchaseOrder> list = service.getAllPurchaseOrders();
+		model.addAttribute("list", list);
+		return "PurchaseOrderData";
 	}
 }
